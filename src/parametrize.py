@@ -28,3 +28,7 @@ def parametrize():
     logging.info(f"Begin Date: {config.begin_date}")
     logging.info(f"End Date: {config.end_date}")
     logging.info(f"Generated Dates: {dates}")
+
+
+if __name__ == "__main__":
+    parametrize()

@@ -14,7 +14,7 @@ class Endpoint(ConfigParser):
             "amsterdam": (52.37, 4.89),
         }
 
-    def build_url(self) -> Generator[str]:
+    def build_url(self) -> Generator[str, None, None]:
         """Build the URL for the endpoint. Assuming hourly data for simplicity."""
         for location in self.get_locations():
             latitude = self.coordinates.get(location)[0]

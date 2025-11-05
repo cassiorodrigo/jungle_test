@@ -58,7 +58,7 @@ class ConfigParser:
         """Get the date configuration."""
         return self.config_data.get("date_config", {})
 
-    def get_locations(self) -> Generator[str]:
+    def get_locations(self) -> Generator[str, None, None]:
         """Get the list of locations from the configuration."""
         for location in self.config_data.get("locations", []):
             yield location.get("name", "")
