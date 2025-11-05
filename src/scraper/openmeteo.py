@@ -13,8 +13,9 @@ import logging
 def write_parquet(data: dict, output_path):
     pd_data = pd.DataFrame(data['hourly'])  # Convert the data to a pandas DataFrame
     tasks_path = load_file_path('tasks.json')        # get the task location and date from data if available
-    pd_data['time'] = pd.to_datetime(pd_data['time'])
-    pd_data['date'] = pd_data['time'].dt.date
+    pd_data['timestamp'] = pd.to_datetime(pd_data['time'])
+    pd_data['date'] = pd_data['timestamp'].dt.date
+    pd_data['location'] = output_path.split("/")[-1]
     for date, group in pd_data.groupby(pd_data['date']):
         group_to_save = group.drop(columns=['date'])
         date = ''.join(str(date).split('-'))
